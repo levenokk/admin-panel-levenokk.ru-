@@ -2,52 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d48e1c24-ca5f-492c-bf43-a2cd420d7fc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddImg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddImg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AddWork.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddWork.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditImg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditImg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/EditWork.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditWork.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FindWork.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FindWork.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImageCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImageCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MailItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MailItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Note.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Note.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ReadMail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ReadMail.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Reload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RemoveImg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RemoveImg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RemoveMail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RemoveMail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RemoveWork.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RemoveWork.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ToggleTheme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToggleTheme.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpdateMail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpdateMail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WorkCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WorkCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grapql/mutation/mutation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/grapql/mutation/mutation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grapql/query/query.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/grapql/query/query.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grapql/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/grapql/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useMutation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useMutation.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/empty.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/empty.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Auth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Auth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Galery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Galery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Mail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Mail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Settings.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingleMail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingleMail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Works.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Works.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/app/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/app/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/app/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/logout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/logout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +62,7 @@
       <workItem from="1621174040425" duration="16000" />
       <workItem from="1621174058350" duration="223000" />
       <workItem from="1621174311436" duration="13098000" />
-      <workItem from="1621228735324" duration="12359000" />
+      <workItem from="1621228735324" duration="12586000" />
     </task>
     <servers />
   </component>
