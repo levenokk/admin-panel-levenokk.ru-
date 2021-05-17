@@ -1,65 +1,65 @@
 export interface Product {
-  id: string
-  title: string
-  url: string
+  id: string;
+  title: string;
+  url: string;
   img: {
-    url: string
-  }
+    url: string;
+  };
 }
 
 export interface ProductsData {
-  products: Product[]
+  products: Product[];
 }
 
 export interface RemoveProductData {
-  removeProduct: Product
+  removeProduct: Product;
 }
 
 export interface AddProductData {
-  addProduct: Product
+  addProduct: Product;
 }
 
 export interface UpdateProductData {
-  updateProduct: Product
+  updateProduct: Product;
 }
 
 export interface Image {
-  id: string
-  url: string
+  id: string;
+  url: string;
 }
 
 export interface Images {
-  images: Image[]
+  images: Image[];
 }
 
 export interface RemoveImgData {
-  removeImg: Image
+  removeImg: Image;
 }
 
 export interface addImgData {
-  addImg: Image
+  addImg: Image;
 }
 
 export interface UpdateImgData {
-  updateImg: Image
+  updateImg: Image;
 }
 
 export interface Mail {
-  name: string
-  email: string
-  message: string
-  read: boolean
-  id: string
+  name: string;
+  email: string;
+  message: string;
+  read: boolean;
+  id: string;
 }
 
 export interface MailData {
-  mail: Mail[]
+  mail: Mail[];
 }
 
 export interface RemoveMailData {
-  removeMail: { id: string }
+  removeMail: { id: string };
 }
 
 export interface UpdateMailData {
-  updateMail: Mail
+  updateMail: Mail;
 }

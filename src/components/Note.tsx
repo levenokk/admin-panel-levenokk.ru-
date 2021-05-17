@@ -1,12 +1,13 @@
-import React from 'react'
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert'
-import { makeStyles, Theme, Snackbar } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../redux/store'
-import { toggleAlert } from '../redux/app/actions'
+import { makeStyles, Snackbar, Theme } from '@material-ui/core';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { toggleAlert } from '../redux/app/actions';
+import { RootReducer } from '../redux/store';
 
 function Alert(props: AlertProps) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -16,22 +17,22 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginTop: theme.spacing(2),
     },
   },
-}))
+}));
 
-const Note: React.FC = ()=> {
-  const classes = useStyles()
-  const open = useSelector((state: RootReducer) => state.app.alert.show)
-  const message = useSelector((state: RootReducer) => state.app.alert.message)
-  const type = useSelector((state: RootReducer) => state.app.alert.type)
-  const dispatch = useDispatch()
+const Note: React.FC = () => {
+  const classes = useStyles();
+  const open = useSelector((state: RootReducer) => state.app.alert.show);
+  const message = useSelector((state: RootReducer) => state.app.alert.message);
+  const type = useSelector((state: RootReducer) => state.app.alert.type);
+  const dispatch = useDispatch();
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
-      return
+      return;
     }
 
-    dispatch(toggleAlert(false))
-  }
+    dispatch(toggleAlert(false));
+  };
 
   return (
     <div className={classes.root}>
@@ -46,8 +47,7 @@ const Note: React.FC = ()=> {
         </Alert>
       </Snackbar>
     </div>
-  )
-}
+  );
+};
 
-
-export default Note
+export default Note;

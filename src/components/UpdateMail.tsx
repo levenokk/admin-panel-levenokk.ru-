@@ -1,40 +1,49 @@
+import { useMutation } from '@apollo/client';
+import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react'
-import {Button} from '@material-ui/core'
-import {useMutation} from "@apollo/client";
-import {UPDATE_MAIL} from "../grapql/mutation/mutation";
-import {UpdateMailData} from "../grapql/types";
-import {useDispatch} from "react-redux";
-import {notificationAction} from "../redux/app/actions";
-import {Note} from "../redux/app/types";
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const UpdateMail: React.FC<{id: string}> = ({id}) => {
-    const [update, {loading}] = useMutation<UpdateMailData,{id: string,read: boolean}>(UPDATE_MAIL)
+import { UPDATE_MAIL } from '../grapql/mutation/mutation';
+import { UpdateMailData } from '../grapql/types';
+import { notificationAction } from '../redux/app/actions';
+import { Note } from '../redux/app/types';
 
-    const dispatch = useDispatch();
+const UpdateMail: React.FC<{ id: string }> = ({ id }) => {
+  const [update, { loading }] =
+    useMutation<UpdateMailData, { id: string; read: boolean }>(UPDATE_MAIL);
 
-    const updateMailHandler = ()=>{
-        update({
-            variables: {
-                id,
-                read: true
-            }
-        }).then(()=>{
-            dispatch(notificationAction("Повідомлення успішно прочитано", Note.success))
-        })
-    }
+  const dispatch = useDispatch();
 
-    return (
-        <>
-          <Button onClick={updateMailHandler} disabled={loading} variant="contained" color="primary">
-            Зробити як прочитане
-          </Button>
-        </>
-  )
-}
+  const updateMailHandler = () => {
+    update({
+      variables: {
+        id,
+        read: true,
+      },
+    }).then(() => {
+      dispatch(
+        notificationAction('Повідомлення успішно прочитано', Note.success),
+      );
+    });
+  };
+
+  return (
+    <>
+      <Button
+        onClick={updateMailHandler}
+        disabled={loading}
+        variant='contained'
+        color='primary'
+      >
+        Зробити як прочитане
+      </Button>
+    </>
+  );
+};
 
 UpdateMail.propTypes = {
   id: PropTypes.string.isRequired,
-}
+};
 
-export default UpdateMail
+export default UpdateMail;

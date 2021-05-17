@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client/core'
+import { gql } from '@apollo/client/core';
 
 export const REMOVE_WORK = gql`
   mutation removeProduct($id: String!) {
@@ -6,7 +6,7 @@ export const REMOVE_WORK = gql`
       id
     }
   }
-`
+`;
 
 export const ADD_WORK = gql`
   mutation addProduct($title: String!, $img: String!, $url: String!) {
@@ -19,10 +19,15 @@ export const ADD_WORK = gql`
       url
     }
   }
-`
+`;
 
 export const UPDATE_WORK = gql`
-  mutation updateProduct($id: String!, $title: String, $img: String, $url: String) {
+  mutation updateProduct(
+    $id: String!
+    $title: String
+    $img: String
+    $url: String
+  ) {
     updateProduct(id: $id, data: { title: $title, img: $img, url: $url }) {
       img {
         url
@@ -32,7 +37,7 @@ export const UPDATE_WORK = gql`
       url
     }
   }
-`
+`;
 
 export const REMOVE_IMG = gql`
   mutation removeImg($id: String!) {
@@ -41,7 +46,7 @@ export const REMOVE_IMG = gql`
       url
     }
   }
-`
+`;
 
 export const ADD_IMG = gql`
   mutation addImg($url: String!) {
@@ -50,7 +55,7 @@ export const ADD_IMG = gql`
       id
     }
   }
-`
+`;
 
 export const EDIT_IMG = gql`
   mutation updateImg($id: String!, $url: String) {
@@ -59,7 +64,7 @@ export const EDIT_IMG = gql`
       url
     }
   }
-`
+`;
 
 export const SIGN = gql`
   mutation sign($login: String!, $password: String!) {
@@ -73,7 +78,7 @@ export const REMOVE_MAIL = gql`
       id
     }
   }
-`
+`;
 
 export const UPDATE_MAIL = gql`
   mutation updateMail($id: String!, $read: Boolean) {

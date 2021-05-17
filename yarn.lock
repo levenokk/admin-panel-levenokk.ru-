@@ -4942,7 +4942,7 @@ eslint-plugin-flowtype@^5.2.0:
     lodash "^4.17.15"
     string-natural-compare "^3.0.1"
 
-eslint-plugin-import@^2.22.1:
+eslint-plugin-import@^2.22.1, eslint-plugin-import@^2.23.2:
   version "2.23.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.23.2.tgz#ee15dd68fc7a1a1ba4c653c734e0d01c100d3484"
   integrity sha512-LmNoRptHBxOP+nb0PIKz1y6OSzCJlB+0g0IGS3XV4KaKk2q4szqQ6s6F1utVf5ZRkxk/QOTjdxe7v4VjS99Bsg==
@@ -5025,6 +5025,11 @@ eslint-plugin-react@^7.21.5:
     prop-types "^15.7.2"
     resolve "^2.0.0-next.3"
     string.prototype.matchall "^4.0.4"
+
+eslint-plugin-simple-import-sort@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-7.0.0.tgz#a1dad262f46d2184a90095a60c66fef74727f0f8"
+  integrity sha512-U3vEDB5zhYPNfxT5TYR7u01dboFZp+HNpnGhkDB2g/2E4wZ/g1Q9Ton8UwCLfRV9yAKyYqDh62oHOamvkFxsvw==
 
 eslint-plugin-testing-library@^3.9.2:
   version "3.10.2"

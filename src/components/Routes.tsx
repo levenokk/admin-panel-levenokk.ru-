@@ -1,73 +1,71 @@
-import React, { useEffect } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootReducer } from '../redux/store'
-import { authAction, initalizeAction } from '../redux/app/actions'
+import { useMutation } from '@apollo/client';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-// general pages
-import Loader from './Loader'
-import MainLayout from '../layouts/Main'
-import EmptyLayout from '../layouts/empty'
-import Note from './Note'
-
-// auth pages
-import Works from '../pages/Works'
-import Settings from '../pages/Settings'
-import Galery from '../pages/Galery'
-import Mail from '../pages/Mail'
-import SingleMail from '../pages/SingleMail'
-
-// not auth pages
-import Auth from '../pages/Auth'
-import { useMutation } from '@apollo/client'
-import { CHECK_AUTH } from '../grapql/mutation/mutation'
+import { CHECK_AUTH } from '../grapql/mutation/mutation';
+import EmptyLayout from '../layouts/empty';
+import MainLayout from '../layouts/Main';
+import Auth from '../pages/Auth';
+import Galery from '../pages/Galery';
+import Mail from '../pages/Mail';
+import Settings from '../pages/Settings';
+import SingleMail from '../pages/SingleMail';
+import Works from '../pages/Works';
+import { authAction, initalizeAction } from '../redux/app/actions';
+import { RootReducer } from '../redux/store';
+import Loader from './Loader';
+import Note from './Note';
 
 const AuthRouter: React.FC = () => {
   return (
     <MainLayout>
       <Switch>
-        <Route path="/works" exact={true} component={Works} />
-        <Route path="/settings" exact={true} component={Settings} />
-        <Route path="/galery" exact={true} component={Galery} />
-        <Route path="/mail" exact={true} component={Mail} />
-        <Route path="/mail/:id" exact={true} component={SingleMail} />
-        <Redirect to="/works" />
+        <Route path='/works' exact={true} component={Works} />
+        <Route path='/settings' exact={true} component={Settings} />
+        <Route path='/galery' exact={true} component={Galery} />
+        <Route path='/mail' exact={true} component={Mail} />
+        <Route path='/mail/:id' exact={true} component={SingleMail} />
+        <Redirect to='/works' />
       </Switch>
     </MainLayout>
-  )
-}
+  );
+};
 
 const NotAuthRouter: React.FC = () => {
   return (
     <EmptyLayout>
       <Switch>
-        <Route path="/login" exact={true} component={Auth} />
-        <Redirect to="/login" />
+        <Route path='/login' exact={true} component={Auth} />
+        <Redirect to='/login' />
       </Switch>
     </EmptyLayout>
-  )
-}
+  );
+};
 
 const Routes: React.FC = () => {
-  const auth = useSelector((state: RootReducer) => state.app.auth)
-  const initalize = useSelector((state: RootReducer) => state.app.initilize)
-  const [sign] = useMutation<{checkAuth: boolean}, null>(CHECK_AUTH)
+  const auth = useSelector((state: RootReducer) => state.app.auth);
+  const initalize = useSelector((state: RootReducer) => state.app.initilize);
+  const [sign] = useMutation<{ checkAuth: boolean }, null>(CHECK_AUTH);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    sign().then(({ data })=>{
-      dispatch(authAction(data!.checkAuth))
-    }).catch(()=>{
-      dispatch(authAction(false))
-    }).finally(()=>{
-      dispatch(initalizeAction())
-    })
-  }, [dispatch])
+    sign()
+      .then(({ data }) => {
+        dispatch(authAction(data!.checkAuth));
+      })
+      .catch(() => {
+        dispatch(authAction(false));
+      })
+      .finally(() => {
+        dispatch(initalizeAction());
+      });
+  }, [dispatch, sign]);
 
   if (!initalize) {
-    document.title = 'Завантаження'
-    return <Loader />
+    document.title = 'Завантаження';
+    return <Loader />;
   }
 
   return (
@@ -75,7 +73,7 @@ const Routes: React.FC = () => {
       <Note />
       {auth ? <AuthRouter /> : <NotAuthRouter />}
     </>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useQuery } from '@apollo/client';
 import {
   Box,
   Button,
@@ -11,55 +11,59 @@ import {
   MenuItem,
   Select,
   TextField,
-} from '@material-ui/core'
-import { Formik } from 'formik'
-import * as yup from 'yup'
-import { useDispatch } from 'react-redux'
-import { UseAddWorkMutation } from '../hooks/useMutation'
-import { logout } from '../utils/logout'
-import { notificationAction } from '../redux/app/actions'
-import { Note } from '../redux/app/types'
-import { useQuery } from '@apollo/client'
-import { Image, Images } from '../grapql/types'
-import { GET_IMAGES } from '../grapql/query/query'
+} from '@material-ui/core';
+import { Formik } from 'formik';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
+
+import { GET_IMAGES } from '../grapql/query/query';
+import { Image, Images } from '../grapql/types';
+import { UseAddWorkMutation } from '../hooks/useMutation';
+import { notificationAction } from '../redux/app/actions';
+import { Note } from '../redux/app/types';
+import { logout } from '../utils/logout';
 
 const schema = yup.object().shape({
   url: yup.string().required("Поле обов'язкове"),
   img: yup.string().required("Поле обов'язкове"),
   title: yup.string().required("Поле обов'язкове"),
-})
+});
 
-// eslint-disable-next-line react/display-name
 const AddWork: React.FC = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
-  const { data, loading } = useQuery<Images, null>(GET_IMAGES)
+  const { data, loading } = useQuery<Images, null>(GET_IMAGES);
   const images = data?.images || [];
 
-  const [addWork] = UseAddWorkMutation()
+  const [addWork] = UseAddWorkMutation();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant='contained' color='primary' onClick={handleClickOpen}>
         Додати
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Додати роботу</DialogTitle>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='form-dialog-title'
+      >
+        <DialogTitle id='form-dialog-title'>Додати роботу</DialogTitle>
         <Formik
           validationSchema={schema}
           initialValues={{ url: '', img: '', title: '' }}
           onSubmit={({ url, img, title }, { setSubmitting }) => {
-            setSubmitting(true)
+            setSubmitting(true);
 
             addWork({
               variables: {
@@ -69,25 +73,35 @@ const AddWork: React.FC = () => {
               },
             })
               .then(() => {
-                dispatch(notificationAction('Робота успішно додана', Note.success))
-                handleClose()
+                dispatch(
+                  notificationAction('Робота успішно додана', Note.success),
+                );
+                handleClose();
               })
               .catch((err) => {
-                setSubmitting(false)
-                logout(err, dispatch)
-              })
+                setSubmitting(false);
+                logout(err, dispatch);
+              });
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, isSubmitting, handleSubmit }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            isSubmitting,
+            handleSubmit,
+          }) => (
             <form onSubmit={handleSubmit}>
               <DialogContent>
                 <TextField
                   autoFocus={true}
-                  margin="dense"
-                  label="Назва"
-                  type="text"
+                  margin='dense'
+                  label='Назва'
+                  type='text'
                   fullWidth={true}
-                  name="title"
+                  name='title'
                   value={values.title}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -95,34 +109,34 @@ const AddWork: React.FC = () => {
                   helperText={errors.title}
                 />
                 <FormControl fullWidth={true}>
-                  <InputLabel id="img">Зображення</InputLabel>
+                  <InputLabel id='img'>Зображення</InputLabel>
                   <Select
-                    labelId="img"
-                    id="img"
+                    labelId='img'
+                    id='img'
                     value={values.img}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     error={touched.img && !!errors.img}
                     fullWidth={true}
-                    name="img"
+                    name='img'
                   >
                     {images?.map(({ id, url }) => {
                       return (
                         <MenuItem value={url} key={id}>
                           {url}
                         </MenuItem>
-                      )
+                      );
                     })}
                     {loading && <Box>Завантаження...</Box>}
                   </Select>
-                  <img src={values.img} alt="" />
+                  <img src={values.img} alt='' />
                 </FormControl>
                 <TextField
-                  margin="dense"
-                  label="Посилання"
-                  type="text"
+                  margin='dense'
+                  label='Посилання'
+                  type='text'
                   fullWidth={true}
-                  name="url"
+                  name='url'
                   value={values.url}
                   onBlur={handleBlur}
                   onChange={handleChange}
@@ -131,10 +145,10 @@ const AddWork: React.FC = () => {
                 />
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose} color="primary">
+                <Button onClick={handleClose} color='primary'>
                   Відміна
                 </Button>
-                <Button disabled={isSubmitting} color="primary" type="submit">
+                <Button disabled={isSubmitting} color='primary' type='submit'>
                   Додати
                 </Button>
               </DialogActions>
@@ -143,7 +157,7 @@ const AddWork: React.FC = () => {
         </Formik>
       </Dialog>
     </div>
-  )
-}
+  );
+};
 
-export default AddWork
+export default AddWork;

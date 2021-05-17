@@ -1,28 +1,33 @@
-import PropTypes from 'prop-types'
-import React, { useState } from 'react'
-import clsx from 'clsx'
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import List from '@material-ui/core/List'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import WorkIcon from '@material-ui/icons/Work'
-import SettingsIcon from '@material-ui/icons/Settings'
-import ImageIcon from '@material-ui/icons/Image'
-import MailIcon from '@material-ui/icons/Mail'
-import { useHistory } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  useTheme,
+} from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ImageIcon from '@material-ui/icons/Image';
+import MailIcon from '@material-ui/icons/Mail';
+import MenuIcon from '@material-ui/icons/Menu';
+import SettingsIcon from '@material-ui/icons/Settings';
+import WorkIcon from '@material-ui/icons/Work';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const drawerWidth = 240
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -86,56 +91,56 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
-  })
-)
+  }),
+);
 
 interface MainProps {
-  children: React.ReactChild
+  children: React.ReactChild;
 }
 
 const MainLayout: React.FC<MainProps> = ({ children }) => {
-  const classes = useStyles()
-  const theme = useTheme()
-  const [open, setOpen] = React.useState(false)
-  const history = useHistory()
-  const [path, setPath] = useState(history.location.pathname)
+  const classes = useStyles();
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+  const history = useHistory();
+  const [path, setPath] = useState(history.location.pathname);
 
   const handleDrawerOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleDrawerClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position='fixed'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
+            color='inherit'
+            aria-label='open drawer'
             onClick={handleDrawerOpen}
-            edge="start"
+            edge='start'
             className={clsx(classes.menuButton, {
               [classes.hide]: open,
             })}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap={true}>
+          <Typography variant='h6' noWrap={true}>
             Адмін панель
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
+        variant='permanent'
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open,
@@ -149,17 +154,21 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </div>
         <Divider />
         <List>
           <ListItem
-            disabled={path === "/works"}
+            disabled={path === '/works'}
             button={true}
             onClick={() => {
-              history.push('/works')
-              setPath('/works')
+              history.push('/works');
+              setPath('/works');
             }}
           >
             <ListItemIcon>
@@ -168,11 +177,11 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
             <ListItemText primary={'Роботи'} />
           </ListItem>
           <ListItem
-            disabled={path === "/galery"}
+            disabled={path === '/galery'}
             button={true}
             onClick={() => {
-              history.push('/galery')
-              setPath('/galery')
+              history.push('/galery');
+              setPath('/galery');
             }}
           >
             <ListItemIcon>
@@ -181,11 +190,11 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
             <ListItemText primary={'Зображення'} />
           </ListItem>
           <ListItem
-            disabled={path === "/mail"}
+            disabled={path === '/mail'}
             button={true}
             onClick={() => {
-              history.push('/mail')
-              setPath('/mail')
+              history.push('/mail');
+              setPath('/mail');
             }}
           >
             <ListItemIcon>
@@ -197,11 +206,11 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
         <Divider />
         <List>
           <ListItem
-            disabled={path === "/settings"}
+            disabled={path === '/settings'}
             button={true}
             onClick={() => {
-              history.push('/settings')
-              setPath('/settings')
+              history.push('/settings');
+              setPath('/settings');
             }}
           >
             <ListItemIcon>
@@ -216,11 +225,11 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
         {children}
       </main>
     </div>
-  )
-}
+  );
+};
 
 MainLayout.propTypes = {
   children: PropTypes.element.isRequired,
-}
+};
 
-export default MainLayout
+export default MainLayout;

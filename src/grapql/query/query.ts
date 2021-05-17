@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client';
 
 export const GET_PRODUCTS = gql`
   query {
@@ -11,7 +11,7 @@ export const GET_PRODUCTS = gql`
       url
     }
   }
-`
+`;
 
 export const GET_IMAGES = gql`
   query {
@@ -20,7 +20,7 @@ export const GET_IMAGES = gql`
       id
     }
   }
-`
+`;
 
 export const GET_MAILS = gql`
   query mail($id: String) {
@@ -32,4 +32,4 @@ export const GET_MAILS = gql`
       id
     }
   }
-`
+`;

@@ -1,17 +1,17 @@
+import { Container } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React from 'react'
-import { Container } from '@material-ui/core'
+import React from 'react';
 
 interface EmptyProps {
-  children: React.ReactChild
+  children: React.ReactChild;
 }
 
 const EmptyLayout: React.FC<EmptyProps> = ({ children }) => {
-  return <Container>{children}</Container>
-}
+  return <Container>{children}</Container>;
+};
 
-EmptyLayout.propTypes ={
+EmptyLayout.propTypes = {
   children: PropTypes.element.isRequired,
-}
+};
 
-export default EmptyLayout
+export default EmptyLayout;

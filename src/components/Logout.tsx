@@ -1,18 +1,19 @@
-import React, { useCallback } from 'react'
-import { Button } from '@material-ui/core'
-import { useDispatch } from 'react-redux'
-import { logoutThunk } from '../redux/app/actions'
+import { Button } from '@material-ui/core';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { logoutThunk } from '../redux/app/actions';
 
 const Logout: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const exit = useCallback(() => {
-    dispatch(logoutThunk())
-  }, [dispatch])
+    dispatch(logoutThunk());
+  }, [dispatch]);
   return (
-    <Button variant="contained" color="secondary" onClick={exit}>
+    <Button variant='contained' color='secondary' onClick={exit}>
       Вийти з системи
     </Button>
-  )
-}
+  );
+};
 
-export default Logout
+export default Logout;

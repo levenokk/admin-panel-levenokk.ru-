@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-import React from 'react'
 import {
   Button,
   Dialog,
@@ -8,26 +6,29 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
-} from '@material-ui/core'
-import DeleteIcon from '@material-ui/icons/Delete'
-import { UseRemoveMailMutation } from '../hooks/useMutation'
-import { useDispatch } from 'react-redux'
-import { notificationAction } from '../redux/app/actions'
-import { Note } from '../redux/app/types'
+} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { UseRemoveMailMutation } from '../hooks/useMutation';
+import { notificationAction } from '../redux/app/actions';
+import { Note } from '../redux/app/types';
 
 const RemoveMail: React.FC<{ id: string }> = ({ id }) => {
-  const [open, setOpen] = React.useState(false)
-  const [removeMail, { loading }] = UseRemoveMailMutation()
+  const [open, setOpen] = React.useState(false);
+  const [removeMail, { loading }] = UseRemoveMailMutation();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const handleRemove = () => {
     removeMail({
@@ -35,10 +36,10 @@ const RemoveMail: React.FC<{ id: string }> = ({ id }) => {
         id,
       },
     }).then(() => {
-      dispatch(notificationAction('Посилання успiшно видалено', Note.success))
-      handleClose()
-    })
-  }
+      dispatch(notificationAction('Посилання успiшно видалено', Note.success));
+      handleClose();
+    });
+  };
 
   return (
     <>
@@ -51,14 +52,21 @@ const RemoveMail: React.FC<{ id: string }> = ({ id }) => {
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id='alert-dialog-title'>Ви дійсно хочете видалити повідомлення ?</DialogTitle>
+        <DialogTitle id='alert-dialog-title'>
+          Ви дійсно хочете видалити повідомлення ?
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-description'>
             Після видалення його не можна буде відновити
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button disabled={loading} onClick={handleClose} color='primary' autoFocus={true}>
+          <Button
+            disabled={loading}
+            onClick={handleClose}
+            color='primary'
+            autoFocus={true}
+          >
             Ні
           </Button>
           <Button disabled={loading} onClick={handleRemove} color='secondary'>
@@ -67,11 +75,11 @@ const RemoveMail: React.FC<{ id: string }> = ({ id }) => {
         </DialogActions>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
 RemoveMail.propTypes = {
   id: PropTypes.string.isRequired,
-}
+};
 
-export default RemoveMail
+export default RemoveMail;
