@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d48e1c24-ca5f-492c-bf43-a2cd420d7fc0" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Reload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reload.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/app/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app/actions.ts" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/Main.tsx" afterDir="false" />
+>>>>>>> dev
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

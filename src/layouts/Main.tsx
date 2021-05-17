@@ -103,7 +103,11 @@ const MainLayout: React.FC<MainProps> = ({ children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const history = useHistory();
-  const [path, setPath] = useState(history.location.pathname);
+  const [path, setPath] = useState(
+    history.location.pathname === '/login'
+      ? '/works'
+      : history.location.pathname,
+  );
 
   const handleDrawerOpen = () => {
     setOpen(true);
