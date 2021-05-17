@@ -1,0 +1,12 @@
+{
+    "short_name": "Admin",
+    "name": "Admin app",
+    "icons": [],
+    "start_url": "./",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "web_accessible_resources": [
+        "fix.css"
+    ]
+}
