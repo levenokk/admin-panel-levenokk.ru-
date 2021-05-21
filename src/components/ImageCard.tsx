@@ -14,7 +14,7 @@ const ImageCard: React.FC<imageCardProps> = ({ url, id }) => {
   return (
     <Box position='relative' marginLeft='20px' marginTop='20px' width='200px'>
       <Box display='flex' justifyContent='flex-end'>
-        <EditImg id={id} url={url} />
+        <EditImg id={id} />
         <RemoveImg id={id} />
       </Box>
       <Divider />

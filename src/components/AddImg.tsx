@@ -1,30 +1,18 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from '@material-ui/core';
-import { Formik } from 'formik';
-import React, { memo } from 'react';
+import { Button, Dialog, DialogActions, DialogTitle } from '@material-ui/core';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import React, { ChangeEvent, memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
 
 import { UseAddImgMutation } from '../hooks/useMutation';
 import { notificationAction } from '../redux/app/actions';
 import { Note } from '../redux/app/types';
 import { logout } from '../utils/logout';
 
-const schema = yup.object().shape({
-  url: yup.string().required("Поле обов'язкове"),
-});
-
 const AddImg: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
-
-  const [addImage] = UseAddImgMutation();
+  const [file, setFile] = useState<File>();
+  const [addImage, { loading }] = UseAddImgMutation();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,6 +20,22 @@ const AddImg: React.FC = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const addImgHandler = () => {
+    addImage({
+      variables: {
+        file: file as File,
+      },
+    })
+      .then(() => {
+        console.log('here');
+        dispatch(notificationAction('Зображення успішно додано', Note.success));
+        handleClose();
+      })
+      .catch((err) => {
+        logout(err, dispatch);
+      });
   };
 
   return (
@@ -45,66 +49,41 @@ const AddImg: React.FC = () => {
         aria-labelledby='form-dialog-title'
       >
         <DialogTitle id='form-dialog-title'>Додати зображення</DialogTitle>
-        <Formik
-          validationSchema={schema}
-          initialValues={{ url: '' }}
-          onSubmit={({ url }, { setSubmitting }) => {
-            setSubmitting(true);
+        <input
+          accept='image/*'
+          id='file'
+          type='file'
+          style={{ display: 'none' }}
+          onChange={(event: ChangeEvent): void => {
+            const target = event.target as HTMLInputElement;
 
-            addImage({
-              variables: {
-                url,
-              },
-            })
-              .then(() => {
-                dispatch(
-                  notificationAction('Зображення успішно додано', Note.success),
-                );
-                handleClose();
-              })
-              .catch((err) => {
-                setSubmitting(false);
-                logout(err, dispatch);
-              });
+            setFile(target.files![0]);
           }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            isSubmitting,
-            handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <DialogContent>
-                <TextField
-                  autoFocus={true}
-                  margin='dense'
-                  id='text'
-                  label='Посилання'
-                  type='text'
-                  fullWidth={true}
-                  name='url'
-                  value={values.url}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  error={touched.url && !!errors.url}
-                  helperText={errors.url}
-                />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color='primary'>
-                  Відміна
-                </Button>
-                <Button disabled={isSubmitting} color='primary' type='submit'>
-                  Додати
-                </Button>
-              </DialogActions>
-            </form>
-          )}
-        </Formik>
+        />
+        <label htmlFor='file' style={{ width: '100%' }}>
+          <Button
+            style={{ width: '100%' }}
+            component='span'
+            variant='contained'
+            color='default'
+            startIcon={<CloudUploadIcon />}
+          >
+            Завантажити
+          </Button>
+        </label>
+        <DialogActions>
+          <Button onClick={handleClose} color='primary'>
+            Відміна
+          </Button>
+          <Button
+            disabled={loading}
+            onClick={addImgHandler}
+            color='primary'
+            type='submit'
+          >
+            Додати
+          </Button>
+        </DialogActions>
       </Dialog>
     </div>
   );

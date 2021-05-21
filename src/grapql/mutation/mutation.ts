@@ -49,8 +49,8 @@ export const REMOVE_IMG = gql`
 `;
 
 export const ADD_IMG = gql`
-  mutation addImg($url: String!) {
-    addImg(url: $url) {
+  mutation addImg($file: Upload!) {
+    addImg(file: $file) {
       url
       id
     }
@@ -58,8 +58,8 @@ export const ADD_IMG = gql`
 `;
 
 export const EDIT_IMG = gql`
-  mutation updateImg($id: String!, $url: String) {
-    updateImg(id: $id, data: { url: $url }) {
+  mutation updateImg($id: String!, $file: Upload!) {
+    updateImg(id: $id, file: $file) {
       id
       url
     }

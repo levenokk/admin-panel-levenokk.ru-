@@ -1,10 +1,11 @@
 import {
   ApolloClient,
+  ApolloLink,
   ApolloProvider,
-  createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { createUploadLink } from 'apollo-upload-client';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -13,9 +14,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import store from './redux/store';
 
-const httpLink = createHttpLink({
-  uri: 'https://admin.levenokk.ru/graphql',
-});
+const httpLink = createUploadLink({
+  uri: '/graphql',
+}) as unknown as ApolloLink;
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('token');

@@ -2,35 +2,28 @@ import {
   Button,
   Dialog,
   DialogActions,
-  DialogContent,
   DialogTitle,
   IconButton,
-  TextField,
 } from '@material-ui/core';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import EditIcon from '@material-ui/icons/Edit';
-import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
 
 import { UseUpdateImgMutation } from '../hooks/useMutation';
 import { notificationAction } from '../redux/app/actions';
 import { Note } from '../redux/app/types';
 import { logout } from '../utils/logout';
 
-const schema = yup.object().shape({
-  url: yup.string().required('Поле не повино бути порожнім'),
-});
-
 interface EditImgProps {
   id: string;
-  url: string;
 }
 
-const EditImg: React.FC<EditImgProps> = ({ id, url }) => {
+const EditImg: React.FC<EditImgProps> = ({ id }) => {
   const [open, setOpen] = React.useState(false);
-  const [updateImg] = UseUpdateImgMutation();
+  const [updateImg, { loading }] = UseUpdateImgMutation();
+  const [file, setFile] = useState<File>();
 
   const dispatch = useDispatch();
 
@@ -41,6 +34,24 @@ const EditImg: React.FC<EditImgProps> = ({ id, url }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const changeImgHandler = () => {
+    updateImg({
+      variables: {
+        id,
+        file: file as File,
+      },
+    })
+      .then(() => {
+        console.log('here');
+        dispatch(notificationAction('Зображення успішно додано', Note.success));
+        handleClose();
+      })
+      .catch((err) => {
+        logout(err, dispatch);
+      });
+  };
+
   return (
     <>
       <IconButton
@@ -57,70 +68,41 @@ const EditImg: React.FC<EditImgProps> = ({ id, url }) => {
         aria-labelledby='form-dialog-title'
       >
         <DialogTitle id='form-dialog-title'>Редагування фотографії</DialogTitle>
-        <Formik
-          validationSchema={schema}
-          initialValues={{ url }}
-          onSubmit={(values, { setSubmitting }) => {
-            setSubmitting(true);
+        <input
+          accept='image/*'
+          id='file'
+          type='file'
+          style={{ display: 'none' }}
+          onChange={(event: ChangeEvent): void => {
+            const target = event.target as HTMLInputElement;
 
-            updateImg({
-              variables: {
-                ...values,
-                id,
-              },
-            })
-              .then(() => {
-                dispatch(
-                  notificationAction(
-                    'Зображення успішно змінено',
-                    Note.success,
-                  ),
-                );
-                handleClose();
-              })
-              .catch((err) => {
-                setSubmitting(false);
-                logout(err, dispatch);
-              });
+            setFile(target.files![0]);
           }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            isSubmitting,
-            handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <DialogContent>
-                <TextField
-                  autoFocus={true}
-                  margin='dense'
-                  id='text'
-                  label='Посилання'
-                  type='text'
-                  fullWidth={true}
-                  name='url'
-                  value={values.url}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  error={touched.url && !!errors.url}
-                  helperText={errors.url}
-                />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color='primary'>
-                  Відміна
-                </Button>
-                <Button disabled={isSubmitting} color='primary' type='submit'>
-                  Змінити
-                </Button>
-              </DialogActions>
-            </form>
-          )}
-        </Formik>
+        />
+        <label htmlFor='file' style={{ width: '100%' }}>
+          <Button
+            style={{ width: '100%' }}
+            component='span'
+            variant='contained'
+            color='default'
+            startIcon={<CloudUploadIcon />}
+          >
+            Завантажити
+          </Button>
+        </label>
+        <DialogActions>
+          <Button onClick={handleClose} color='primary'>
+            Відміна
+          </Button>
+          <Button
+            disabled={loading}
+            onClick={changeImgHandler}
+            color='primary'
+            type='submit'
+          >
+            Змінити
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );
@@ -128,7 +110,6 @@ const EditImg: React.FC<EditImgProps> = ({ id, url }) => {
 
 EditImg.propTypes = {
   id: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 export default EditImg;

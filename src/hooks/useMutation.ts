@@ -124,9 +124,9 @@ export const UseRemoveImgMutation = (): MutationTuple<
 
 export const UseAddImgMutation = (): MutationTuple<
   addImgData,
-  { url: string }
+  { file: File }
 > => {
-  return useMutation<addImgData, { url: string }>(ADD_IMG, {
+  return useMutation<addImgData, { file: File }>(ADD_IMG, {
     update: (cache, { data }) => {
       cache.modify({
         fields: {
@@ -151,9 +151,9 @@ export const UseAddImgMutation = (): MutationTuple<
 
 export const UseUpdateImgMutation = (): MutationTuple<
   UpdateImgData,
-  { id: string; url: string }
+  { id: string; file: File }
 > => {
-  return useMutation<UpdateImgData, { id: string; url: string }>(EDIT_IMG, {
+  return useMutation<UpdateImgData, { id: string; file: File }>(EDIT_IMG, {
     update: (cache, { data }) => {
       cache.modify({
         fields: {
