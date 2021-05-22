@@ -29,7 +29,6 @@ const AddImg: React.FC = () => {
       },
     })
       .then(() => {
-        console.log('here');
         dispatch(notificationAction('Зображення успішно додано', Note.success));
         handleClose();
       })
